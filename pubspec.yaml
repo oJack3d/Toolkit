@@ -23,6 +23,7 @@ environment:
 dependencies:
   flashlight: ^0.1.1
   camera: ^0.7.0+1
+  flutter_local_notifications: ^4.0.0
   flutter:
     sdk: flutter
 

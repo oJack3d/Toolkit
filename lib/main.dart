@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:toolkit/cameraPage.dart';
 import 'package:toolkit/flashlightPage.dart';
+import 'package:toolkit/notificationPage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -48,6 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
             makeDashboardItem("Lupe", Icons.zoom_in, context),
             makeDashboardItem("Taschenlampe", Icons.wb_incandescent, context),
             makeDashboardItem("Notizen", Icons.auto_stories, context),
+            makeDashboardItem("Benachrichtigung", Icons.announcement_outlined, context)
           ],
         ),
       ),
@@ -69,6 +71,18 @@ Card makeDashboardItem(String title, IconData icon, BuildContext context) {
                       builder: (_) => CameraPage()
                    )
                );
+            if (title == 'Notizen')
+              Navigator.of(context).push(
+                  MaterialPageRoute(
+                      builder: (_) => CameraPage()
+                  )
+              );
+            if (title == 'Benachrichtigung')
+              Navigator.of(context).push(
+                  MaterialPageRoute(
+                      builder: (_) => NotificationPage()
+                  )
+              );
             else
               Navigator.of(context).push(
                   MaterialPageRoute(
