@@ -86,7 +86,7 @@ class _NotificationState extends State<NotificationPage> {
       'OHHH',
       'Jetzt... gits en Ton',
       platformChannelSpecifics,
-      payload: 'salamisound_bimmeln',
+      payload: 'salamisound',
     );
   }
 }
