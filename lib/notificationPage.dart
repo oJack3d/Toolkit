@@ -70,23 +70,23 @@ class _NotificationState extends State<NotificationPage> {
     var platformChannelSpecifics = NotificationDetails(android: androidPlatformChannelSpecifics, iOS: iOSPlatformChannelSpecifics);
     await flutterLocalNotificationsPlugin.show(
       0,
-      'AHHHHH!',
-      'De huere Grümpel',
+      'Heureka!',
+      'gaga',
       platformChannelSpecifics,
       payload: '',
     );
   }
 
   Future _notificationWithSound() async {
-    var androidPlatformChannelSpecifics = AndroidNotificationDetails('id', 'name', 'description', sound: 'salamisound', importance: Importance.max, priority: Priority.high);
+    var androidPlatformChannelSpecifics = AndroidNotificationDetails('id', 'name', 'description', sound: RawResourceAndroidNotificationSound('salamisound_bimmeln'), importance: Importance.max, priority: Priority.high);
     var iOSPlatformChannelSpecifics = IOSNotificationDetails();
     var platformChannelSpecifics = NotificationDetails(android: androidPlatformChannelSpecifics, iOS: iOSPlatformChannelSpecifics);
     await flutterLocalNotificationsPlugin.show(
       0,
       'OHHH',
-      'Jetzt...Jetzt.. gits en Ton',
+      'Jetzt... gits en Ton',
       platformChannelSpecifics,
-      payload: 'Salami_Sound',
+      payload: 'salamisound_bimmeln',
     );
   }
 }

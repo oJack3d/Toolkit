@@ -14,7 +14,7 @@ class _CameraAppState extends State<CameraPage> {
   @override
   void initState() {
     super.initState();
-    controller = CameraController(cameras[0], ResolutionPreset.ultraHigh);
+    controller = CameraController(cameras[4], ResolutionPreset.ultraHigh);
     controller.initialize().then((_) {
       if (!mounted) {
         return;
