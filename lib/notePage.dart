@@ -82,6 +82,5 @@ class _NotePage extends State<NotePage> {
       });
     }
   }
-
 }
 
