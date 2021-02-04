@@ -9,7 +9,8 @@ import 'package:toolkit/soundboardPage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  cameras = await availableCameras();
+  // cameras = await availableCameras();
+  var notes = NotePage();
   runApp(MyApp());
 }
 

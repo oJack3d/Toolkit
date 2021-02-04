@@ -21,6 +21,8 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  provider: ^4.3.3
+  audioplayers: ^0.17.3
   flutter_compass: ^0.5.1
   shared_preferences: ^0.5.12+4
   flashlight: ^0.1.1
@@ -56,8 +58,7 @@ flutter:
   assets:
     - assets/images/compass.jpg
     - assets/images/test1.jpg
-    - assets/images/test2.jpg
-    - assets/images/test3.jpg
+    - assets/images/test1.png
     - assets/sounds/test1.mp3
     - assets/sounds/test2.mp3
     - assets/sounds/test3.mp3
