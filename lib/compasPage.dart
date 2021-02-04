@@ -67,7 +67,7 @@ class _CompassState extends State<CompassPage> {
             ),
             child: Transform.rotate(
               angle: ((direction ?? 0) * (math.pi / 180) * -1),
-              child: Image.asset('assets/compass.jpg'),
+              child: Image.asset('assets/images/compass.jpg'),
             ),
           ),
         );

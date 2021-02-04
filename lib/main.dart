@@ -5,6 +5,7 @@ import 'package:toolkit/compasPage.dart';
 import 'package:toolkit/flashlightPage.dart';
 import 'package:toolkit/notePage.dart';
 import 'package:toolkit/notificationPage.dart';
+import 'package:toolkit/soundboardPage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -52,7 +53,8 @@ class _MyHomePageState extends State<MyHomePage> {
             makeDashboardItem("Taschenlampe", Icons.wb_incandescent, context),
             makeDashboardItem("Notizen", Icons.auto_stories, context),
             makeDashboardItem("Benachrichtigung", Icons.announcement_outlined, context),
-            makeDashboardItem("Kompass", Icons.assistant_navigation, context)
+            makeDashboardItem("Kompass", Icons.assistant_navigation, context),
+            makeDashboardItem("Soundboard", Icons.surround_sound_outlined, context)
           ],
         ),
       ),
@@ -90,6 +92,12 @@ Card makeDashboardItem(String title, IconData icon, BuildContext context) {
               Navigator.of(context).push(
                   MaterialPageRoute(
                       builder: (_) => CompassPage()
+                  )
+              );
+            else if (title == 'Soundboard')
+              Navigator.of(context).push(
+                  MaterialPageRoute(
+                      builder: (_) => Soundboard()
                   )
               );
             else
