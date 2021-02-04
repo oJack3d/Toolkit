@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:toolkit/cameraPage.dart';
+import 'package:toolkit/compasPage.dart';
 import 'package:toolkit/flashlightPage.dart';
+import 'package:toolkit/notePage.dart';
 import 'package:toolkit/notificationPage.dart';
 
 void main() async {
@@ -49,7 +51,8 @@ class _MyHomePageState extends State<MyHomePage> {
             makeDashboardItem("Lupe", Icons.zoom_in, context),
             makeDashboardItem("Taschenlampe", Icons.wb_incandescent, context),
             makeDashboardItem("Notizen", Icons.auto_stories, context),
-            makeDashboardItem("Benachrichtigung", Icons.announcement_outlined, context)
+            makeDashboardItem("Benachrichtigung", Icons.announcement_outlined, context),
+            makeDashboardItem("Kompass", Icons.assistant_navigation, context)
           ],
         ),
       ),
@@ -71,16 +74,22 @@ Card makeDashboardItem(String title, IconData icon, BuildContext context) {
                       builder: (_) => CameraPage()
                    )
                );
-            if (title == 'Notizen')
+            else if (title == 'Notizen')
               Navigator.of(context).push(
                   MaterialPageRoute(
-                      builder: (_) => CameraPage()
+                      builder: (_) => NotePage()
                   )
               );
-            if (title == 'Benachrichtigung')
+            else if (title == 'Benachrichtigung')
               Navigator.of(context).push(
                   MaterialPageRoute(
                       builder: (_) => NotificationPage()
+                  )
+              );
+            else if (title == 'Kompass')
+              Navigator.of(context).push(
+                  MaterialPageRoute(
+                      builder: (_) => CompassPage()
                   )
               );
             else

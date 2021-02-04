@@ -65,28 +65,30 @@ class _NotificationState extends State<NotificationPage> {
   }
 
   Future _showNotification() async {
-    var androidPlatformChannelSpecifics = AndroidNotificationDetails('id', 'name', 'description', playSound: false, importance: Importance.max, priority: Priority.high);
+    var androidPlatformChannelSpecifics = AndroidNotificationDetails('id', 'name', 'description', playSound: false, sound: RawResourceAndroidNotificationSound(null), importance: Importance.max, priority: Priority.high);
     var iOSPlatformChannelSpecifics = IOSNotificationDetails(presentSound: false);
     var platformChannelSpecifics = NotificationDetails(android: androidPlatformChannelSpecifics, iOS: iOSPlatformChannelSpecifics);
+    print('no sound');
     await flutterLocalNotificationsPlugin.show(
       0,
       'AHHHHH!',
       'De huere Grümpel',
       platformChannelSpecifics,
-      payload: '',
+      payload: 'no sound',
     );
   }
 
   Future _notificationWithSound() async {
-    var androidPlatformChannelSpecifics = AndroidNotificationDetails('id', 'name', 'description', sound: 'salamisound', importance: Importance.max, priority: Priority.high);
+    var androidPlatformChannelSpecifics = AndroidNotificationDetails('id', 'name', 'description', sound: RawResourceAndroidNotificationSound('salamisound'), importance: Importance.max, priority: Priority.high);
     var iOSPlatformChannelSpecifics = IOSNotificationDetails();
     var platformChannelSpecifics = NotificationDetails(android: androidPlatformChannelSpecifics, iOS: iOSPlatformChannelSpecifics);
+    print('sound');
     await flutterLocalNotificationsPlugin.show(
       0,
       'OHHH',
       'Jetzt...Jetzt.. gits en Ton',
       platformChannelSpecifics,
-      payload: 'Salami_Sound',
+      payload: 'salami sound',
     );
   }
 }
