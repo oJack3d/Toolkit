@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:provider/provider.dart';
+import 'package:toolkit/main.dart';
 
 class NotePage extends StatefulWidget{
   @override
@@ -38,7 +39,7 @@ class _NotePage extends State<NotePage> {
 
   @override
   Widget build(BuildContext context) {
-    var notes = Provider.of<NotePage>(context);
+    var notes = Provider.of<Notes>(context);
     return Scaffold(
       appBar: AppBar(
         title: const Text("Notizen"),
@@ -59,7 +60,7 @@ class _NotePage extends State<NotePage> {
   }
 
   Widget notesView(BuildContext context) {
-
+    var notes = Provider.of<Notes>(context);
     return ListView.builder(
       reverse: true,
       itemCount: widget._notes.length ?? 0,

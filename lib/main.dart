@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:toolkit/cameraPage.dart';
 import 'package:toolkit/compasPage.dart';
 import 'package:toolkit/flashlightPage.dart';
@@ -10,21 +12,42 @@ import 'package:toolkit/soundboardPage.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // cameras = await availableCameras();
-  var notes = NotePage();
-  runApp(MyApp());
+  var notes = Notes();
+  runApp(MyApp(notes));
+}
+
+class Notes extends ChangeNotifier {
+  SharedPreferences _prefs;
+  List<String> _notes;
+
+  Future<void> initNotes() async {
+    _prefs = await getPrefs();
+    _notes = _prefs.getStringList('notes') ?? [];
+  }
+
+  Future<SharedPreferences> getPrefs() async{
+    return await SharedPreferences.getInstance();
+  }
+
+  List<String> get notes => List.unmodifiable(_notes);
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+  Notes notes;
+  MyApp(this.notes);
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return ChangeNotifierProvider<Notes>(
+      create: (_) => notes,
+      child: MaterialApp(
       title: 'Toolkit',
       theme: ThemeData(
         primarySwatch: Colors.green,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: MyHomePage(),
-    );
+    ));
   }
 }
 class MyHomePage extends StatefulWidget {
