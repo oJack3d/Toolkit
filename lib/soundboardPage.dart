@@ -8,12 +8,14 @@ class Soundboard extends StatefulWidget {
 }
 
 class _SoundboardState extends State<Soundboard> {
+
+  // Images List
   List<String> _Images = [
     'assets/images/test1.jpg',
     'assets/images/test1.png'
   ];
 
-  /// Sound List
+  // Sound List
   List<String> _Sounds = [
     'sounds/test1.mp3',
     'sounds/test2.mp3',
@@ -26,7 +28,7 @@ class _SoundboardState extends State<Soundboard> {
     'sounds/test9.mp3',
   ];
 
-  /// Audio Cache
+  // Audio Cache
   AudioCache audioCache;
   AudioPlayer audioPlayer;
   int indexIsPlaying;
@@ -53,7 +55,7 @@ class _SoundboardState extends State<Soundboard> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          Text('Soundboard oder auch Bashboard'),
+          Text('Soundboard: Drücke einen Knopf!'),
           GridView.builder(
             shrinkWrap: true,
             itemCount: 9,
