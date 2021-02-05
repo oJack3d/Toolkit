@@ -65,14 +65,15 @@ class _NotificationState extends State<NotificationPage> {
   }
 
   Future _showNotification() async {
-    var androidPlatformChannelSpecifics = AndroidNotificationDetails('id', 'name', 'description', playSound: false, sound: RawResourceAndroidNotificationSound(null), importance: Importance.max, priority: Priority.high);
+    var androidPlatformChannelSpecifics = AndroidNotificationDetails('id', 'name', 'description', playSound: false, /*sound: RawResourceAndroidNotificationSound(null),*/ importance: Importance.max, priority: Priority.high);
     var iOSPlatformChannelSpecifics = IOSNotificationDetails(presentSound: false);
     var platformChannelSpecifics = NotificationDetails(android: androidPlatformChannelSpecifics, iOS: iOSPlatformChannelSpecifics);
-    print('no sound');
+    // todo: Every button takes the correct function, but if you first pick the function without sound both buttons play no sound and otherwise...!
+    // print('no sound');
     await flutterLocalNotificationsPlugin.show(
       0,
-      'AHHHHH!',
-      'De huere Grümpel',
+      'Erinnerung',
+      'Erinnerungstext',
       platformChannelSpecifics,
       payload: 'no sound',
     );
@@ -82,11 +83,11 @@ class _NotificationState extends State<NotificationPage> {
     var androidPlatformChannelSpecifics = AndroidNotificationDetails('id', 'name', 'description', sound: RawResourceAndroidNotificationSound('salamisound'), importance: Importance.max, priority: Priority.high);
     var iOSPlatformChannelSpecifics = IOSNotificationDetails();
     var platformChannelSpecifics = NotificationDetails(android: androidPlatformChannelSpecifics, iOS: iOSPlatformChannelSpecifics);
-    print('sound');
+    // print('sound');
     await flutterLocalNotificationsPlugin.show(
       0,
-      'OHHH',
-      'Jetzt...Jetzt.. gits en Ton',
+      'Erinnerung!',
+      'Erinnerungstext mit Ton',
       platformChannelSpecifics,
       payload: 'salami sound',
     );
