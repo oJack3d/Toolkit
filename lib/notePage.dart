@@ -47,7 +47,7 @@ class _NotePage extends State<NotePage> {
       body: Container(
         child: Column(
             children:[
-              Expanded( child: notesView(context)), //Column and List needs expanded
+              Expanded( child: notesView(context, notes)), //Column and List needs expanded
               TextField(controller: controller),
               ElevatedButton(
                 child: Text('Einfügen'),
@@ -59,20 +59,30 @@ class _NotePage extends State<NotePage> {
     );
   }
 
-  Widget notesView(BuildContext context) {
-    var notes = Provider.of<Notes>(context);
-    return ListView.builder(
-      reverse: true,
-      itemCount: widget._notes.length ?? 0,
-      itemBuilder: (BuildContext context, int index) {
-        return Card(
-          child: ListTile(
-            title: Text('${widget._notes[index]}'),
-          ),
-        );
-      },
+  Widget notesView(BuildContext context, Notes notes) {
+    return FutureBuilder<void>(
+      future: Provider.of<Notes>(context).initNotes(),
+        builder: (context, future) {
+          if (future.connectionState == ConnectionState.done) {
+            return ListView.builder(
+              reverse: true,
+              itemCount: notes.notes.length ?? 0,
+              itemBuilder: (BuildContext context, int index) {
+                return Card(
+                  child: ListTile(
+                    title: Text('${notes.notes[index]}'),
+                  ),
+                );
+              },
+            );
+          }
+          else {
+            return Center(child: CircularProgressIndicator(),);
+          }
+        }
     );
   }
+
 
   void _addNote() {
     if (controller.text.isEmpty) return;

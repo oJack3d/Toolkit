@@ -11,7 +11,7 @@ import 'package:toolkit/soundboardPage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // cameras = await availableCameras();
+  cameras = await availableCameras();
   var notes = Notes();
   runApp(MyApp(notes));
 }
@@ -89,10 +89,10 @@ class _MyHomePageState extends State<MyHomePage> {
 Card makeDashboardItem(String title, IconData icon, BuildContext context) {
   return Card(
       elevation: 1.0,
-      margin: new EdgeInsets.all(8.0),
+      margin: EdgeInsets.all(8.0),
       child: Container(
         decoration: BoxDecoration(color: Color.fromRGBO(220, 220, 220, 1.0)),
-        child: new InkWell(
+        child: InkWell(
           onTap: () {
             if (title == 'Lupe')
                Navigator.of(context).push(
@@ -144,10 +144,10 @@ Card makeDashboardItem(String title, IconData icon, BuildContext context) {
                     color: Colors.black,
                   )),
               SizedBox(height: 20.0),
-              new Center(
-                child: new Text(title,
+              Center(
+                child: Text(title,
                     style:
-                    new TextStyle(fontSize: 18.0, color: Colors.black)),
+                    TextStyle(fontSize: 18.0, color: Colors.black)),
               )
             ],
           ),
